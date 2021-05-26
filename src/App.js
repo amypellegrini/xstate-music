@@ -4,7 +4,7 @@ function GridItem({ children }) {
   return <div style={{ width: "150px", margin: "60px" }}>{children}</div>;
 }
 
-function Circle({ harmonicFunction }) {
+function Chord({ symbol }) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -26,34 +26,139 @@ function Circle({ harmonicFunction }) {
         text-anchor="middle"
         style={{
           fontFamily: "monospace",
-          fontSize: "2rem",
+          fontSize: "1.5rem",
         }}
       >
-        {harmonicFunction}
+        {symbol}
       </text>
 
-      <Arrow x1="45" x2="45" y1="95" y2="187" />
-      <line x1="40" x2="45" y1="177" y2="187" stroke="green" strokeWidth="2" />
-      <line x1="50" x2="45" y1="177" y2="187" stroke="green" strokeWidth="2" />
+      <Arrow direction="down" />
 
-      <Arrow x1="60" x2="60" y1="5" y2="-87" />
-      <line x1="55" x2="60" y1="-77" y2="-85" stroke="purple" strokeWidth="2" />
-      <line x1="65" x2="60" y1="-77" y2="-85" stroke="purple" strokeWidth="2" />
+      <Arrow direction="left" />
 
-      <Arrow x1="5" x2="-85" y1="45" y2="45" />
-      <line x1="-80" x2="-85" y1="50" y2="45" stroke="red" strokeWidth="2" />
-      <line x1="-80" x2="-85" y1="40" y2="45" stroke="red" strokeWidth="2" />
+      <Arrow direction="right" />
 
-      <Arrow x1="95" x2="185" y1="60" y2="60" />
-      <line x1="180" x2="185" y1="65" y2="60" stroke="blue" strokeWidth="2" />
-      <line x1="180" x2="185" y1="55" y2="60" stroke="blue" strokeWidth="2" />
+      <Arrow direction="up" />
     </svg>
   );
 }
 
-function Arrow({ x1, x2, y1, y2 }) {
+function Arrow({ direction }) {
   return (
-    <line x1={x1} x2={x2} y1={y1} y2={y2} stroke="#000000" strokeWidth="2" />
+    <>
+      {direction === "down" && (
+        <>
+          <line
+            x1="45"
+            x2="45"
+            y1="95"
+            y2="187"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="40"
+            x2="45"
+            y1="177"
+            y2="187"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="50"
+            x2="45"
+            y1="177"
+            y2="187"
+            stroke="black"
+            strokeWidth="2"
+          />
+        </>
+      )}
+      {direction === "left" && (
+        <>
+          <line
+            x1="5"
+            x2="-85"
+            y1="45"
+            y2="45"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="-80"
+            x2="-85"
+            y1="50"
+            y2="45"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="-80"
+            x2="-85"
+            y1="40"
+            y2="45"
+            stroke="black"
+            strokeWidth="2"
+          />
+        </>
+      )}
+      {direction === "right" && (
+        <>
+          <line
+            x1="95"
+            x2="185"
+            y1="60"
+            y2="60"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="180"
+            x2="185"
+            y1="65"
+            y2="60"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="180"
+            x2="185"
+            y1="55"
+            y2="60"
+            stroke="black"
+            strokeWidth="2"
+          />
+        </>
+      )}
+      {direction === "up" && (
+        <>
+          <line
+            x1="60"
+            x2="60"
+            y1="5"
+            y2="-87"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="55"
+            x2="60"
+            y1="-77"
+            y2="-85"
+            stroke="black"
+            strokeWidth="2"
+          />
+          <line
+            x1="65"
+            x2="60"
+            y1="-77"
+            y2="-85"
+            stroke="black"
+            strokeWidth="2"
+          />
+        </>
+      )}
+    </>
   );
 }
 
@@ -71,24 +176,24 @@ function App() {
         <div style={{ display: "flex" }}>
           <GridItem />
           <GridItem>
-            <Circle harmonicFunction="IV" />
+            <Chord symbol="Fmaj9" />
           </GridItem>
         </div>
         <div style={{ display: "flex" }}>
           <GridItem>
-            <Circle harmonicFunction="II" />
+            <Chord symbol="Dm9" />
           </GridItem>
           <GridItem>
-            <Circle harmonicFunction="V" />
+            <Chord symbol="G13" />
           </GridItem>
           <GridItem>
-            <Circle harmonicFunction="I" />
+            <Chord symbol="Cmaj9" />
           </GridItem>
         </div>
         <div style={{ display: "flex" }}>
           <GridItem />
           <GridItem>
-            <Circle harmonicFunction="VI" />
+            <Chord symbol="Am9" />
           </GridItem>
         </div>
       </div>
